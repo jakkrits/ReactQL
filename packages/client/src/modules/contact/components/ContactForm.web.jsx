@@ -7,20 +7,20 @@ import { required, email, minLength } from '../../../../../common/validation';
 const ContactForm = ({ handleSubmit, submitting, onSubmit, error, sent }) => {
   return (
     <Form name="contact" onSubmit={handleSubmit(onSubmit)}>
-      {sent && <Alert color="success">Thank you for contacting us!</Alert>}
-      <Field name="name" component={RenderField} type="text" label="Name" validate={[required, minLength(3)]} />
-      <Field name="email" component={RenderField} type="text" label="Email" validate={[required, email]} />
+      {sent && <Alert color="success">ได้รับอีเมลแล้ว ขอบคุณค่ะ!</Alert>}
+      <Field name="ชื่อ" component={RenderField} type="text" label="ขื่อ - สกุล" validate={[required, minLength(3)]} />
+      <Field name="อีเมล" component={RenderField} type="text" label="อีเมลของคุณ" validate={[required, email]} />
       <Field
-        name="content"
+        name="เรื่อง"
         component={RenderField}
         type="textarea"
-        label="Content"
+        label="ท่านต้องการติดต่อเรื่องใด"
         validate={[required, minLength(10)]}
       />
       <div className="text-center">
         {error && <Alert color="error">{error}</Alert>}
         <Button color="primary" type="submit" disabled={submitting}>
-          Submit
+          ส่งเลย!
         </Button>
       </div>
     </Form>

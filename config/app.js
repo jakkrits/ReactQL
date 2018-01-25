@@ -1,5 +1,5 @@
 export default {
-  name: 'Apollo Starter Kit',
+  name: 'อาชาไนยแล็ป by PPSmart',
   logging: {
     debugSQL: false,
     apolloLogging: false

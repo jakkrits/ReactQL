@@ -1,5 +1,5 @@
 {
-  "name": "apollo-universal-starter-kit",
+  "name": "ppsmart_reactql",
   "private": true,
   "version": "1.0.0",
   "engines": {
@@ -43,7 +43,7 @@
   "bugs": {
     "url": "https://github.com/sysgears/apollo-universal-starter-kit/issues"
   },
-  "homepage": "https://github.com/sysgears/apollo-universal-starter-kit",
+  "homepage": "https://app.ppsmartbot.com",
   "keywords": [
     "apollo",
     "universal",
@@ -52,7 +52,7 @@
     "react",
     "redux"
   ],
-  "author": "SysGears INC",
+  "author": "JakkritS",
   "license": "MIT",
   "workspaces": [
     "packages/*"
