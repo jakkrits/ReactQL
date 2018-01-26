@@ -1,6 +1,7 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import { PageLayout } from '../../common/components/web';
+import { Row, Col } from '../../common/components/web/ui-antd/components';
 
 const renderMetaData = () => (
   <Helmet
@@ -18,9 +19,11 @@ const HomeView = () => {
   return (
     <PageLayout>
       {renderMetaData()}
-      <div className="text-center mt-4 mb-4">
-        <p>Hello Home!</p>
-      </div>
+      <div>
+        <Row>
+          <Col span={24}> จอ 1 </Col>
+        </Row>
+      </div>,
     </PageLayout>
   );
 };
