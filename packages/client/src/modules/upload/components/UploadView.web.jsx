@@ -82,7 +82,7 @@ export default class UploadView extends React.PureComponent {
           <Row>
             <Col xs={4}>
               <Dropzone onDrop={this.onDrop(uploadFiles)}>
-                <p>Try dropping some files here, or click to select files to upload.</p>
+                <p>อัพโหลดไฟล์ภาพหรือวิดีโอ (คลิกหรือลากไฟล์วางที่นี่)</p>
               </Dropzone>
             </Col>
             <Col xs={8}>
