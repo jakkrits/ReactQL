@@ -21,7 +21,10 @@ const HomeView = () => {
       {renderMetaData()}
       <div>
         <Row>
-          <Col span={24}> จอ 1 </Col>
+          <Col span={24}>
+            <h1>ควย</h1>
+            <img src="../../../../../../app.png" className="img-fluid" alt="Responsive image" />
+          </Col>
         </Row>
       </div>,
     </PageLayout>

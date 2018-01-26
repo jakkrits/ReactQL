@@ -66,7 +66,7 @@ export default new Feature({
     <MenuItem key="/login">
       <AuthLogin>
         <NavLink to="/login" className="nav-link" activeClassName="active">
-          Sign In
+          เข้าสู่ระบบ
         </NavLink>
       </AuthLogin>
     </MenuItem>

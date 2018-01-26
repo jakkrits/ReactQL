@@ -25,18 +25,18 @@ const googleLogin = () => {
 const LoginForm = ({ handleSubmit, submitting, onSubmit, error }) => {
   return (
     <Form name="login" onSubmit={handleSubmit(onSubmit)}>
-      <Field name="email" component={RenderField} type="email" label="Email" validate={[required, email]} />
+      <Field name="email" component={RenderField} type="email" label="อีเมล" validate={[required, email]} />
       <Field
         name="password"
         component={RenderField}
         type="password"
-        label="Password"
+        label="พาสเวิร์ด"
         validate={[required, minLength(5)]}
       />
       <div className="text-center">{error && <Alert color="error">{error}</Alert>}</div>
       <div className="text-center">
         <Button color="primary" type="submit" disabled={submitting}>
-          Login
+          ล็อกอิน!
         </Button>
         {settings.user.auth.facebook.enabled && (
           <Button color="primary" type="button" onClick={facebookLogin} style={{ margin: 10 }}>
@@ -50,13 +50,13 @@ const LoginForm = ({ handleSubmit, submitting, onSubmit, error }) => {
         )}
       </div>
       <Link className="text-center" to="/forgot-password">
-        Forgot your password?
+        ลืมพาสเวิร์ด?
       </Link>
       <hr />
       <div style={{ marginBottom: 16 }}>
-        <span style={{ lineHeight: '58px' }}>Not registered yet?</span>
+        <span style={{ lineHeight: '58px' }}>ยังไม่มีบัญชีผู้ใช้</span>
         <NavLink className="btn btn-primary" to="/register" activeClassName="active" style={{ margin: 10 }}>
-          Sign Up
+          ลงทะเบียน
         </NavLink>
       </div>
     </Form>

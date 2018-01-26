@@ -15,7 +15,7 @@ export default new Feature({
   navItem: (
     <MenuItem key="/upload">
       <NavLink to="/upload" className="nav-link" activeClassName="active">
-        Upload
+        อัพโหลดไฟล์
       </NavLink>
     </MenuItem>
   ),

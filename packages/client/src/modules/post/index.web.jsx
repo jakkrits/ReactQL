@@ -14,7 +14,7 @@ export default new Feature({
   navItem: (
     <MenuItem key="/posts">
       <NavLink to="/posts" className="nav-link" activeClassName="active">
-        Posts
+        รายการไฟล์
       </NavLink>
     </MenuItem>
   ),

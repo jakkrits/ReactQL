@@ -52,7 +52,7 @@ export default class PostList extends React.PureComponent {
     } else {
       const columns = [
         {
-          title: 'Title',
+          title: 'ไฟล์',
           dataIndex: 'title',
           key: 'title',
           render: (text, record) => (
@@ -62,9 +62,9 @@ export default class PostList extends React.PureComponent {
           )
         },
         {
-          title: 'Actions',
+          title: 'ทำรายการ',
           key: 'actions',
-          width: 50,
+          width: 100,
           render: (text, record) => (
             <Button
               color="primary"
@@ -72,7 +72,7 @@ export default class PostList extends React.PureComponent {
               className="delete-button"
               onClick={() => this.hendleDeletePost(record.id)}
             >
-              Delete
+              ลบ
             </Button>
           )
         }
@@ -80,9 +80,9 @@ export default class PostList extends React.PureComponent {
       return (
         <PageLayout>
           {this.renderMetaData()}
-          <h2>Posts</h2>
+          <h2>รายการไฟล์</h2>
           <Link to="/post/0">
-            <Button color="primary">Add</Button>
+            <Button color="primary">เพิ่ม</Button>
           </Link>
           <h1 />
           <Table dataSource={posts.edges.map(({ node }) => node)} columns={columns} />

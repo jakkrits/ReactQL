@@ -52,7 +52,7 @@ export default class ContactView extends React.Component {
       <PageLayout>
         {renderMetaData()}
         <LayoutCenter>
-          <h1 className="text-center">Contact Us</h1>
+          <h1 className="text-center">ติดต่อเรา</h1>
           <ContactForm onSubmit={this.onSubmit({ contact, onFormSubmitted })} sent={this.state.sent} />
         </LayoutCenter>
       </PageLayout>
