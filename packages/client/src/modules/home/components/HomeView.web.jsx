@@ -76,6 +76,15 @@ class HomeView extends React.Component {
           <Row gutter={16}>
             <Col span={8}>
               <h1>FEED4</h1>
+              <div>
+                <iframe
+                  src="https://player.twitch.tv/?volume=0.5&!muted&channel=jakkrits1"
+                  height="100%"
+                  width={300}
+                  frameBorder="0"
+                  allowFullScreen
+                />
+              </div>
             </Col>
             <Col span={8}>
               <h1>FEED5</h1>
