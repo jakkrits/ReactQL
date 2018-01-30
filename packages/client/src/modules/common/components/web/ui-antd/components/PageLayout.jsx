@@ -19,7 +19,7 @@ const PageLayout = ({ children, navBar }) => {
         <Content id="content" style={{ background: '#fff', padding: 24, minHeight: 280 }}>
           {children}
         </Content>
-        <Footer style={{ textAlign: 'center' }}>&copy; 2017. {settings.app.name}.</Footer>
+        <Footer style={{ textAlign: 'center' }}>&copy; 2018. {settings.app.name}.</Footer>
       </Layout>
     </div>
   );
