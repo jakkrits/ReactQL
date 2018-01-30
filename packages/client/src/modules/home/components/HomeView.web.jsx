@@ -1,11 +1,10 @@
 import React from 'react';
 import Helmet from 'react-helmet';
-import { Card } from 'antd';
 import Webcam from 'react-webcam';
+import { CardImg, CardBody, CardSubtitle } from 'reactstrap';
 import { PageLayout } from '../../common/components/web';
-import { Row, Col } from '../../common/components/web/ui-antd/components';
+import { Row, Col, Card, CardText, CardTitle, Button } from '../../common/components/web/ui-bootstrap';
 
-const { Meta } = Card;
 const renderMetaData = () => (
   <Helmet
     title="Home"
@@ -37,56 +36,38 @@ class HomeView extends React.Component {
     return (
       <PageLayout>
         {renderMetaData()}
-        <div style={{ background: '#ECECEC', padding: '30px' }}>
-          <Row guttter={16}>
-            <Col span={8}>
-              <Card
-                hoverable
-                cover={
-                  <img
-                    alt="example"
-                    src="https://i.pinimg.com/originals/a4/e8/f6/a4e8f6f6620923f8947cd8ed7e9c2950.jpg"
-                  />
-                }
-              >
-                <Meta title="กล้อง 1" description="แยกราชประสงค์" />
-              </Card>
-            </Col>
-            <Col span={8}>
-              <Card
-                hoverable
-                cover={
-                  <img
-                    alt="example"
-                    src="https://i.pinimg.com/originals/57/33/69/5733695f52f4408694c8ce7be3b3134d.jpg"
-                  />
-                }
-              >
-                <Meta title="กล้อง 2" description="ห้างทองหลีเกี่ยวฮวด" />
-              </Card>
-            </Col>
-            <Col span={8}>
-              <Card hoverable cover={<img alt="example" src="https://pbs.twimg.com/media/DKhUFmrVwAAVBn0.jpg" />}>
-                <Meta title="กล้อง 3" description="ตู้เอทีเอ็มหน้าโรงบาล" />
+        <div className="container">
+          <Row>
+            <Col>
+              <Card>
+                <CardImg top width="100%" src={require('./homepage-archanai.jpg')} alt="Card image cap" />
+                <CardBody>
+                  <CardTitle>Card title</CardTitle>
+                  <CardSubtitle>Card subtitle</CardSubtitle>
+                  <CardText>
+                    <p>Some quick example text to build on the card title and make up the bulk of the content.</p>
+                  </CardText>
+                  <Button>Button</Button>
+                </CardBody>
               </Card>
             </Col>
           </Row>
           <br />
           <p> More Feed </p>
-          <Row gutter={16}>
-            <Col span={8}>
+          <Row>
+            <Col>
               <h1>FEED4</h1>
               <div>
                 <iframe
                   src="https://player.twitch.tv/?volume=0.5&!muted&channel=jakkrits1"
                   height="100%"
-                  width={300}
+                  width="100%"
                   frameBorder="0"
                   allowFullScreen
                 />
               </div>
             </Col>
-            <Col span={8}>
+            <Col>
               <h1>FEED5</h1>
               <Webcam
                 audio={true}
@@ -102,7 +83,7 @@ class HomeView extends React.Component {
                 <img src="https://i.ytimg.com/vi/XQu8TTBmGhA/hqdefault.jpg" />
               )}
             </Col>
-            <Col span={8}>
+            <Col>
               <h1>FEED6</h1>
             </Col>
           </Row>
