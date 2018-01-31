@@ -14,6 +14,7 @@ const Footer = styled.footer`
   width: 100%;
   line-height: ${footerHeight};
   height: ${footerHeight};
+  background: rgba(0, 0, 0, 0.8);
 `;
 
 const PageLayout = ({ children, navBar }) => {
@@ -22,7 +23,7 @@ const PageLayout = ({ children, navBar }) => {
       {navBar !== false && <NavBar />}
       <Container id="content">{children}</Container>
       <Footer>
-        <div className="text-center">&copy; 2018. {settings.app.name}.</div>
+        <div className="text-center text-white">&copy; 2018. {settings.app.name}.</div>
       </Footer>
     </section>
   );
