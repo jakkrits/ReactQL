@@ -11,19 +11,29 @@ export default class UploadView extends React.PureComponent {
   static propTypes = {
     files: PropTypes.array,
     uploadFiles: PropTypes.func.isRequired,
-    removeFile: PropTypes.func.isRequired
+    removeFile: PropTypes.func.isRequired,
+    returnedObject: PropTypes.object
   };
 
   constructor(props) {
     super(props);
-    this.fetchImage = this.fetchImage.bind(this);
+    this.getRequestImage = this.getRequestImage.bind(this);
   }
 
   state = {
     error: null,
-    returnedObject: null
+    returnedObject: {
+      confidence: '',
+      label: '',
+      xmax: 0,
+      ymax: 0,
+      xmin: 0,
+      ymin: 0,
+      imageUrl: '',
+      result: ''
+    }
   };
-  url = 'http://203.154.245.241:9080/powerai-vision/temp/ee4749bb-0e0f-45a4-8d58-e9c0eab9f726.jpg';
+
   renderMetaData = () => (
     <Helmet
       title={`${settings.app.name} - Upload`}
@@ -42,7 +52,7 @@ export default class UploadView extends React.PureComponent {
       this.setState({ error: result.error });
     } else {
       this.setState({ error: null });
-      this.fetchImage(this.url);
+      this.postRequestImage();
     }
   };
 
@@ -58,33 +68,48 @@ export default class UploadView extends React.PureComponent {
 
   fetchRealtimeFeed = feed => console.log(feed);
 
-  fetchImage = imageUrl => {
+  getRequestImage = url => {
     axios
-      .get(
-        `http://203.154.245.241:9080/powerai-vision/api/dlapis/0572bb30-328b-4ecb-8694-544ad3c0be57?imageUrl=${imageUrl}`
-      )
+      .get(`http://203.154.245.241:9080/powerai-vision/api/dlapis/0572bb30-328b-4ecb-8694-544ad3c0be57?imageUrl=${url}`)
       .then(response => {
+        console.warn(response);
         let json = JSON.stringify(response.data.classified);
         let jsonParsed = JSON.parse(json);
+        let { imageUrl, result } = response.data;
         let { confidence, label, xmax, ymax, xmin, ymin } = jsonParsed[0];
-        console.log(confidence);
-        console.log(label);
-        console.log(xmax);
-        console.log(ymax);
-        console.log(xmin);
-        console.log(ymin);
+        this.setState({
+          returnedObject: {
+            imageUrl,
+            result,
+            confidence,
+            label,
+            xmax,
+            ymax,
+            xmin,
+            ymin
+          }
+        });
       })
       .catch(error => {
         console.log(error);
       });
   };
 
+  showResultOnImage = () => (
+    <div>
+      <p>Confidence: {this.state.returnedObject.confidence}</p>
+      <p>Label: {this.state.returnedObject.label}</p>
+      <p>X max: {this.state.returnedObject.xmax}</p>
+      <p>Y max: {this.state.returnedObject.ymax}</p>
+      <p>X min: {this.state.returnedObject.xmin}</p>
+      <p>Y min: {this.state.returnedObject.ymin}</p>
+      <p>Result: {this.state.returnedObject.result}</p>
+    </div>
+  );
+
   render() {
     const { files, uploadFiles } = this.props;
     const { error } = this.state;
-    console.log(files);
-    console.log('******');
-    console.log(uploadFiles);
     const columns = [
       {
         title: 'ชื่อไฟล์',
@@ -112,6 +137,13 @@ export default class UploadView extends React.PureComponent {
       <PageLayout>
         {this.renderMetaData()}
         <div className="text-center">
+          <Row className="mb-2">
+            <Col xs={4}>{this.state.returnedObject.confidence > 0.5 && this.showResultOnImage()}</Col>
+            <Col xs={8}>
+              {' '}
+              <img className="img-fluid" src={this.state.returnedObject.imageUrl} />
+            </Col>
+          </Row>
           <Row>
             <Col xs={4}>
               <Dropzone onDrop={this.onDrop(uploadFiles)}>
