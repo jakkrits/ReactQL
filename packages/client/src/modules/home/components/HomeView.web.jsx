@@ -50,11 +50,12 @@ class HomeView extends React.Component {
               </Card>
               <Card>
                 <iframe
-                  src="https://player.twitch.tv/?volume=0.5&!muted&channel=jakkrits1"
-                  height="350px"
-                  width="100%"
+                  src="https://player.twitch.tv/?channel=lds7131"
                   frameBorder="0"
-                  allowFullScreen
+                  allowFullScreen="true"
+                  scrolling="no"
+                  height="350"
+                  width="100%"
                 />
                 <CardBody>
                   <CardTitle>กล้อง 1</CardTitle>
@@ -67,11 +68,12 @@ class HomeView extends React.Component {
               </Card>
               <Card>
                 <iframe
-                  src="https://player.twitch.tv/?volume=0.5&!muted&channel=jakkrits1"
-                  height="350px"
-                  width="100%"
+                  src="https://player.twitch.tv/?channel=iateyourpie"
                   frameBorder="0"
-                  allowFullScreen
+                  allowFullScreen="true"
+                  scrolling="no"
+                  height="350"
+                  width="100%"
                 />
                 <CardBody>
                   <CardTitle>กล้อง 1</CardTitle>
@@ -87,11 +89,12 @@ class HomeView extends React.Component {
             <CardDeck>
               <Card>
                 <iframe
-                  src="https://player.twitch.tv/?volume=0.5&!muted&channel=jakkrits1"
-                  height="350px"
-                  width="100%"
+                  src="https://player.twitch.tv/?channel=474784"
                   frameBorder="0"
-                  allowFullScreen
+                  allowFullScreen="true"
+                  scrolling="no"
+                  height="350"
+                  width="100%"
                 />
                 <CardBody>
                   <CardTitle>กล้อง 1</CardTitle>
@@ -104,11 +107,12 @@ class HomeView extends React.Component {
               </Card>
               <Card>
                 <iframe
-                  src="https://player.twitch.tv/?volume=0.5&!muted&channel=jakkrits1"
-                  height="350px"
-                  width="100%"
+                  src="https://player.twitch.tv/?channel=p4wnyhof"
                   frameBorder="0"
-                  allowFullScreen
+                  allowFullScreen="true"
+                  scrolling="no"
+                  height="350"
+                  width="100%"
                 />
                 <CardBody>
                   <CardTitle>กล้อง 1</CardTitle>
@@ -121,11 +125,12 @@ class HomeView extends React.Component {
               </Card>
               <Card>
                 <iframe
-                  src="https://player.twitch.tv/?volume=0.5&!muted&channel=jakkrits1"
-                  height="350px"
-                  width="100%"
+                  src="https://player.twitch.tv/?channel=playbattlegrounds"
                   frameBorder="0"
-                  allowFullScreen
+                  allowFullScreen="true"
+                  scrolling="no"
+                  height="350"
+                  width="100%"
                 />
                 <CardBody>
                   <CardTitle>กล้อง 1</CardTitle>
