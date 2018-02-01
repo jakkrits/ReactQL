@@ -11542,7 +11542,7 @@ right-align@^0.1.1:
   dependencies:
     align-text "^0.1.1"
 
-rimraf@2, rimraf@^2.2.8, rimraf@^2.5.1, rimraf@^2.5.4, rimraf@^2.6.1:
+rimraf@2, rimraf@^2.2.8, rimraf@^2.5.1, rimraf@^2.5.4, rimraf@^2.6.1, rimraf@^2.6.2:
   version "2.6.2"
   resolved "https://registry.yarnpkg.com/rimraf/-/rimraf-2.6.2.tgz#2ed8150d24a16ea8651e6d6ef0f47c4158ce7a36"
   dependencies:
@@ -12305,9 +12305,9 @@ spdy@^3.4.1:
     select-hose "^2.0.0"
     spdy-transport "^2.0.18"
 
-spinjs@^0.4.87:
-  version "0.4.87"
-  resolved "https://registry.yarnpkg.com/spinjs/-/spinjs-0.4.87.tgz#a089720b6179863696999f2224db542e3165e850"
+spinjs@^0.4.0, spinjs@^0.4.95:
+  version "0.4.95"
+  resolved "https://registry.yarnpkg.com/spinjs/-/spinjs-0.4.95.tgz#74ecb762a15e07773e9ed8b49eee5d006bbbdf6a"
   dependencies:
     babel-polyfill "^6.26.0"
     babel-preset-env "^1.6.1"
