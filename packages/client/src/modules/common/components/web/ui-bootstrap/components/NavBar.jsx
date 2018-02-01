@@ -6,10 +6,10 @@ import modules from '../../../../../../modules';
 import settings from '../../../../../../../../../settings';
 
 const NavBar = () => (
-  <Navbar color="faded" light>
+  <Navbar className="text-white mb-5" color="dark">
     <Container>
       <Nav>
-        <NavLink to="/" className="navbar-brand">
+        <NavLink to="/" className="navbar-brand text-white">
           {settings.app.name}
         </NavLink>
         {modules.navItems}
@@ -19,7 +19,7 @@ const NavBar = () => (
         {modules.navItemsRight}
         {(!__PERSIST_GQL__ || __DEV__) && (
           <NavItem>
-            <a href="/graphiql" className="nav-link">
+            <a href="/graphiql" className="nav-link text-white">
               GraphiQL
             </a>
           </NavItem>
