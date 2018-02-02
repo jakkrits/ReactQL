@@ -18,8 +18,9 @@ export default pubsub => ({
         const fileName = filePath + `${file.name}`;
         fs.rename(filePath, fileName, err => {
           if (err) throw new Error('Unable to rename');
-        });
+        }); // for file extension to save in real directory
         file.path = fileName;
+        // for file extension to save in database
         return file;
       });
       return await Upload.saveFiles(files);
