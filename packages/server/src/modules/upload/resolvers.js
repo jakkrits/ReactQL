@@ -1,6 +1,7 @@
 /*eslint-disable no-unused-vars*/
 import shell from 'shelljs';
 import fs from 'fs';
+import path from 'path';
 
 import FieldError from '../../../../common/FieldError';
 
@@ -15,7 +16,9 @@ export default pubsub => ({
       files.map(file => {
         const filePath = `${file.path}`;
         const fileName = filePath + `${file.name}`;
-        fs.rename(filePath, fileName);
+        fs.rename(filePath, fileName, err => {
+          if (err) throw new Error('Unable to rename');
+        });
       });
       return await Upload.saveFiles(files);
     },
