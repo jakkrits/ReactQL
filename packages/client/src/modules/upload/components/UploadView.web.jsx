@@ -12,7 +12,8 @@ export default class UploadView extends React.PureComponent {
     files: PropTypes.array,
     uploadFiles: PropTypes.func.isRequired,
     removeFile: PropTypes.func.isRequired,
-    returnedObject: PropTypes.object
+    returnedObject: PropTypes.object,
+    loading: PropTypes.bool.isRequired
   };
 
   constructor(props) {
@@ -48,12 +49,10 @@ export default class UploadView extends React.PureComponent {
 
   onDrop = uploadFiles => async files => {
     const result = await uploadFiles(files);
-    console.log(files);
     if (result && result.error) {
       this.setState({ error: result.error });
     } else {
       this.setState({ error: null });
-      this.postRequestImage();
     }
   };
 
@@ -109,7 +108,23 @@ export default class UploadView extends React.PureComponent {
   );
 
   render() {
+    if (this.props.loading) {
+      return (
+        <PageLayout>
+          <Row className="text-center">
+            <Col>
+              <p>...</p>
+            </Col>
+          </Row>
+        </PageLayout>
+      );
+    }
     const { files, uploadFiles } = this.props;
+    let lastUploadItem = files[files.length - 1];
+    let returned = this.getRequestImage('https://archanai-lab.herokuapp.com/' + lastUploadItem.path);
+    this.setState({
+      returnedObject: returned
+    });
     const { error } = this.state;
     const columns = [
       {

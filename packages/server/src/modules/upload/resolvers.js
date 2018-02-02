@@ -1,8 +1,6 @@
 /*eslint-disable no-unused-vars*/
 import shell from 'shelljs';
 import fs from 'fs';
-import path from 'path';
-
 import FieldError from '../../../../common/FieldError';
 
 export default pubsub => ({
@@ -15,7 +13,7 @@ export default pubsub => ({
     uploadFiles: async (obj, { files }, { Upload }) => {
       files.map(file => {
         const filePath = `${file.path}`;
-        const fileName = filePath + `${file.name}`;
+        const fileName = filePath + encodeURIComponent(file.name);
         fs.rename(filePath, fileName, err => {
           if (err) throw new Error('Unable to rename');
         }); // for file extension to save in real directory
