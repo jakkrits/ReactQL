@@ -19,6 +19,8 @@ export default pubsub => ({
         fs.rename(filePath, fileName, err => {
           if (err) throw new Error('Unable to rename');
         });
+        file.path = fileName;
+        return file;
       });
       return await Upload.saveFiles(files);
     },
@@ -30,9 +32,7 @@ export default pubsub => ({
 
       const ok = await Upload.deleteFile(id);
       if (ok) {
-        const filePath = `${file.path}`;
-        const fileName = filePath + `${file.name}`;
-        const res = shell.rm(fileName);
+        const res = shell.rm(file.path);
         if (res.code > 0) {
           throw new Error('Unable to delete file.');
         }
