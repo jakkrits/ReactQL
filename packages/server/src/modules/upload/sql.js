@@ -1,4 +1,5 @@
 /*eslint-disable no-unused-vars*/
+import fs from 'fs';
 import knex from '../../sql/connector';
 
 export default class Upload {

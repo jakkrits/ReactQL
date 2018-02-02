@@ -12,6 +12,11 @@ export default pubsub => ({
   },
   Mutation: {
     uploadFiles: async (obj, { files }, { Upload }) => {
+      files.map(file => {
+        const filePath = `${file.path}`;
+        const fileName = filePath + `${file.name}`;
+        fs.rename(filePath, fileName);
+      });
       return await Upload.saveFiles(files);
     },
     removeFile: async (obj, { id }, { Upload }) => {
@@ -23,7 +28,8 @@ export default pubsub => ({
       const ok = await Upload.deleteFile(id);
       if (ok) {
         const filePath = `${file.path}`;
-        const res = shell.rm(filePath);
+        const fileName = filePath + `${file.name}`;
+        const res = shell.rm(fileName);
         if (res.code > 0) {
           throw new Error('Unable to delete file.');
         }
