@@ -48,6 +48,7 @@ export default class UploadView extends React.PureComponent {
 
   onDrop = uploadFiles => async files => {
     const result = await uploadFiles(files);
+    console.log(files);
     if (result && result.error) {
       this.setState({ error: result.error });
     } else {
