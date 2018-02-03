@@ -120,11 +120,11 @@ export default class UploadView extends React.PureComponent {
       );
     }
     const { files, uploadFiles } = this.props;
-    let lastUploadItem = files[files.length - 1];
-    let returned = this.getRequestImage('https://archanai-lab.herokuapp.com/' + lastUploadItem.path);
-    this.setState({
-      returnedObject: returned
-    });
+    // let lastUploadItem = files[files.length - 1];
+    // let returned = this.getRequestImage('https://archanai-lab.herokuapp.com/' + lastUploadItem.path);
+    // this.setState({
+    //  returnedObject: returned
+    // });
     const { error } = this.state;
     const columns = [
       {
