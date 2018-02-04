@@ -12,8 +12,14 @@ export default pubsub => ({
   Mutation: {
     uploadFiles: async (obj, { files }, { Upload }) => {
       files.map(file => {
-        const filePath = `${file.path}`;
-        const fileName = filePath + encodeURIComponent(file.name);
+        let filePath = `${file.path}`;
+        let fileName =
+          filePath +
+          '.' +
+          encodeURIComponent(file.name)
+            .split('.')
+            .pop();
+        console.log(fileName);
         fs.rename(filePath, fileName, err => {
           if (err) throw new Error('Unable to rename');
         }); // for file extension to save in real directory
