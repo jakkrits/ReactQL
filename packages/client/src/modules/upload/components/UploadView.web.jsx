@@ -73,8 +73,9 @@ export default class UploadView extends React.PureComponent {
     let imageUrl = '';
     if (this.props.files) {
       const { files } = this.props;
-      const latestUploaded = files[files.length - 1].path;
-      imageUrl = `${window.origin}/${latestUploaded}`;
+      const latestUploaded = files[files.length - 1];
+      let pathUrl = latestUploaded.path;
+      imageUrl = `${window.origin}/${pathUrl}`;
     }
     axios
       .get(`http://203.154.245.241:9080/powerai-vision/api/dlapis/0572bb30-328b-4ecb-8694-544ad3c0be57`, {
