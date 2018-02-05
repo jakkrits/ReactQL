@@ -52,6 +52,7 @@ export default class UploadView extends React.PureComponent {
     if (result && result.error) {
       this.setState({ error: result.error });
     } else {
+      this.getRequestImage();
       this.setState({ error: null });
     }
   };
@@ -68,9 +69,20 @@ export default class UploadView extends React.PureComponent {
 
   fetchRealtimeFeed = feed => console.log(feed);
 
-  getRequestImage = url => {
+  getRequestImage = () => {
+    let imageUrl = '';
+    if (this.props.files) {
+      const { files } = this.props;
+      const latestUploaded = files[files.length - 1].path;
+      imageUrl = `${window.origin}/${latestUploaded}`;
+    }
     axios
-      .get(`http://203.154.245.241:9080/powerai-vision/api/dlapis/0572bb30-328b-4ecb-8694-544ad3c0be57?imageUrl=${url}`)
+      .get(`http://203.154.245.241:9080/powerai-vision/api/dlapis/0572bb30-328b-4ecb-8694-544ad3c0be57`, {
+        params: {
+          // imageUrl: 'http://203.154.245.241:9080/powerai-vision/temp/a6d6834a-e19e-45ce-929e-9bb0090f42c1.jpg'
+          imageUrl
+        }
+      })
       .then(response => {
         console.warn(response);
         let json = JSON.stringify(response.data.classified);
