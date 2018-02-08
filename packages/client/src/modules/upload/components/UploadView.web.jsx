@@ -4,8 +4,13 @@ import Helmet from 'react-helmet';
 import Dropzone from 'react-dropzone';
 import filesize from 'filesize';
 import axios from 'axios';
+import FormData from 'form-data';
 import { PageLayout, Row, Col, Table, Button, Alert } from '../../common/components/web';
 import settings from '../../../../../../settings';
+
+const BASE_URL = 'http://203.154.245.241:9080/powerai-vision/api/dlapis/';
+const API = '0572bb30-328b-4ecb-8694-544ad3c0be57';
+const ENDPOINT = BASE_URL + API;
 
 export default class UploadView extends React.PureComponent {
   static propTypes = {
@@ -19,9 +24,11 @@ export default class UploadView extends React.PureComponent {
   constructor(props) {
     super(props);
     this.getRequestImage = this.getRequestImage.bind(this);
+    this.postRequestImage = this.postRequestImage.bind(this);
   }
 
   state = {
+    imageUrl: '',
     error: null,
     returnedObject: {
       confidence: '',
@@ -52,8 +59,15 @@ export default class UploadView extends React.PureComponent {
     if (result && result.error) {
       this.setState({ error: result.error });
     } else {
-      this.getRequestImage();
       this.setState({ error: null });
+      if (this.props.files) {
+        const { files } = this.props;
+        const latestUploaded = files[files.length - 1];
+        let pathUrl = latestUploaded.path;
+        this.setState({ imageUrl: `${window.origin}/${pathUrl}` });
+      }
+      // this.getRequestImage();
+      this.postRequestImage();
     }
   };
 
@@ -70,24 +84,19 @@ export default class UploadView extends React.PureComponent {
   fetchRealtimeFeed = feed => console.log(feed);
 
   getRequestImage = () => {
-    let imageUrl = '';
-    if (this.props.files) {
-      const { files } = this.props;
-      const latestUploaded = files[files.length - 1];
-      let pathUrl = latestUploaded.path;
-      imageUrl = `${window.origin}/${pathUrl}`;
-    }
+    console.log(ENDPOINT);
     axios
-      .get(`http://203.154.245.241:9080/powerai-vision/api/dlapis/0572bb30-328b-4ecb-8694-544ad3c0be57`, {
+      .get(ENDPOINT, {
         params: {
-          // imageUrl: 'http://203.154.245.241:9080/powerai-vision/temp/a6d6834a-e19e-45ce-929e-9bb0090f42c1.jpg'
-          imageUrl
+          imageUrl: this.state.imageUrl
         }
       })
       .then(response => {
         console.warn(response);
         let json = JSON.stringify(response.data.classified);
+        console.log(json);
         let jsonParsed = JSON.parse(json);
+        console.log(jsonParsed);
         let { imageUrl, result } = response.data;
         let { confidence, label, xmax, ymax, xmin, ymin } = jsonParsed[0];
         this.setState({
@@ -104,6 +113,26 @@ export default class UploadView extends React.PureComponent {
         });
       })
       .catch(error => {
+        console.error(error);
+      });
+  };
+
+  postRequestImage = () => {
+    console.log('Post method');
+    console.log(this.state.imageUrl);
+    let data = new FormData();
+    axios
+      .post(ENDPOINT, data, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Headers': 'Content-Type'
+        }
+      })
+      .then(function(response) {
+        console.log(response);
+      })
+      .catch(function(error) {
         console.log(error);
       });
   };
