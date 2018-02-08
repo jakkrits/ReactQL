@@ -66,7 +66,7 @@ export default class UploadView extends React.PureComponent {
         let pathUrl = latestUploaded.path;
         this.setState({ imageUrl: `${window.origin}/${pathUrl}` });
       }
-      // this.getRequestImage();
+      this.getRequestImage();
       this.postRequestImage();
     }
   };
@@ -121,6 +121,9 @@ export default class UploadView extends React.PureComponent {
     console.log('Post method');
     console.log(this.state.imageUrl);
     let data = new FormData();
+    const { files } = this.props.files;
+    let latestUploaded = files[files.length - 1];
+    data.append(latestUploaded);
     axios
       .post(ENDPOINT, data, {
         headers: {
