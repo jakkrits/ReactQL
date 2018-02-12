@@ -8,7 +8,8 @@ import FormData from 'form-data';
 import { PageLayout, Row, Col, Table, Button, Alert } from '../../common/components/web';
 import settings from '../../../../../../settings';
 
-const BASE_URL = 'http://203.154.245.241:9080/powerai-vision/api/dlapis/';
+// const BASE_URL = 'http://203.154.245.241:9080/powerai-vision/api/dlapis/';
+const BASE_URL = 'https://203.154.59.71/powerai-vision/api/dlapis/';
 const API = '0572bb30-328b-4ecb-8694-544ad3c0be57';
 const ENDPOINT = BASE_URL + API;
 
