@@ -11,7 +11,6 @@ export default graphiqlExpress(req => {
 
   return {
     endpointURL: '/graphql',
-    subscriptionsEndpoint: subscriptionsUrl,
-    query: '{\n' + '  counter {\n' + '    amount\n' + '  }\n' + '}'
+    subscriptionsEndpoint: subscriptionsUrl
   };
 });

@@ -33,29 +33,11 @@ class HomeView extends React.Component {
             <CardDeck>
               <Card>
                 <iframe
-                  src="https://player.twitch.tv/?volume=0.5&!muted&channel=jakkrits1"
+                  src="https://youtu.be/LC8h5N1ZtSw"
                   height="350px"
                   width="100%"
                   frameBorder="0"
                   allowFullScreen
-                />
-                <CardBody>
-                  <CardTitle>กล้อง 1</CardTitle>
-                  <CardSubtitle>สถานที่ 1</CardSubtitle>
-                  <CardText>
-                    สถานะ: <small className="text-muted">Streaming</small>
-                  </CardText>
-                  <Button color="primary">บังคับกล้อง</Button>
-                </CardBody>
-              </Card>
-              <Card>
-                <iframe
-                  src="https://player.twitch.tv/?channel=lds7131"
-                  frameBorder="0"
-                  allowFullScreen="true"
-                  scrolling="no"
-                  height="350"
-                  width="100%"
                 />
                 <CardBody>
                   <CardTitle>กล้อง 1</CardTitle>
@@ -108,24 +90,6 @@ class HomeView extends React.Component {
               <Card>
                 <iframe
                   src="https://player.twitch.tv/?channel=p4wnyhof"
-                  frameBorder="0"
-                  allowFullScreen="true"
-                  scrolling="no"
-                  height="350"
-                  width="100%"
-                />
-                <CardBody>
-                  <CardTitle>กล้อง 1</CardTitle>
-                  <CardSubtitle>สถานที่ 1</CardSubtitle>
-                  <CardText>
-                    สถานะ: <small className="text-muted">Streaming</small>
-                  </CardText>
-                  <Button color="primary">บังคับกล้อง</Button>
-                </CardBody>
-              </Card>
-              <Card>
-                <iframe
-                  src="https://player.twitch.tv/?channel=playbattlegrounds"
                   frameBorder="0"
                   allowFullScreen="true"
                   scrolling="no"
