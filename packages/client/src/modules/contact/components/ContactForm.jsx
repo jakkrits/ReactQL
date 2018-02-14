@@ -1,24 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Field, reduxForm } from 'redux-form';
+import { withFormik } from 'formik';
+import Field from '../../../utils/FieldAdapter';
 import { FormView, RenderField, FormButton } from '../../common/components/native';
-import { required, email, minLength } from '../../../../../common/validation';
+import { email, minLength, required, validateForm } from '../../../../../common/validation';
 
-const ContactForm = ({ handleSubmit, valid, onSubmit }) => {
+const contactFormSchema = {
+  name: [required, minLength(3)],
+  email: [required, email],
+  content: [required, minLength(10)]
+};
+
+const validate = values => validateForm(values, contactFormSchema);
+
+const ContactForm = ({ values, handleSubmit }) => {
   return (
     <FormView>
-      <Field name="ชื่อ" component={RenderField} type="text" label="ชื่อของคุณ" validate={[required, minLength(1)]} />
-      <Field name="อีเมล" component={RenderField} type="text" label="อีเมลของคุณ" validate={[required, email]} />
-      <Field
-        name="เรื่อง"
-        component={RenderField}
-        type="textarea"
-        label="ท่านต้องการติดต่อเรื่องใด"
-        validate={[required, minLength(10)]}
-      />
-      <FormButton onPress={handleSubmit(onSubmit)} disabled={!valid}>
-        ส่ง
-      </FormButton>
+      <Field name="name" component={RenderField} type="text" label="Name" value={values.name} />
+      <Field name="email" component={RenderField} type="text" label="Email" value={values.email} />
+      <Field name="content" component={RenderField} type="textarea" label="Content" value={values.content} />
+      <FormButton onPress={handleSubmit}>Send</FormButton>
     </FormView>
   );
 };
@@ -26,10 +27,19 @@ const ContactForm = ({ handleSubmit, valid, onSubmit }) => {
 ContactForm.propTypes = {
   handleSubmit: PropTypes.func,
   onSubmit: PropTypes.func,
-  valid: PropTypes.bool
+  submitting: PropTypes.bool,
+  error: PropTypes.string,
+  sent: PropTypes.bool,
+  values: PropTypes.object
 };
 
-export default reduxForm({
-  form: 'contact',
-  enableReinitialize: true
-})(ContactForm);
+const ContactFormWithFormik = withFormik({
+  async handleSubmit(values, { resetForm, props: { onSubmit } }) {
+    await onSubmit(values);
+    resetForm();
+  },
+  validate: values => validate(values),
+  displayName: 'ContactUsForm' // helps with React DevTools
+});
+
+export default ContactFormWithFormik(ContactForm);

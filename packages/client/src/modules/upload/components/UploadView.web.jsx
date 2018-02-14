@@ -72,7 +72,7 @@ export default class UploadView extends React.PureComponent {
     }
   };
 
-  hendleRemoveFile = async id => {
+  handleRemoveFile = async id => {
     const { removeFile } = this.props;
     const result = await removeFile(id);
     if (result && result.error) {
