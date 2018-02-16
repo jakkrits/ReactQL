@@ -10,9 +10,10 @@ import settings from '../../../../../../settings';
 
 // const BASE_URL = 'http://203.154.245.241:9080/powerai-vision/api/dlapis/';
 const BASE_URL = 'https://203.154.59.71/powerai-vision/api/dlapis/';
-const API = '0572bb30-328b-4ecb-8694-544ad3c0be57';
-const ENDPOINT = BASE_URL + API;
+// const API = '0572bb30-328b-4ecb-8694-544ad3c0be57'; // GUN ONLY
+const API = 'c954d598-ee23-49be-bfa2-dc80402c7966'; // Gun + Helmet
 
+const ENDPOINT = BASE_URL + API;
 export default class UploadView extends React.PureComponent {
   static propTypes = {
     files: PropTypes.array,
