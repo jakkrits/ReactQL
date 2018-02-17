@@ -142,17 +142,24 @@ export default class UploadView extends React.PureComponent {
       });
   };
 
-  showResultOnImage = () => (
-    <div>
-      <p>Confidence: {this.state.returnedObject.confidence}</p>
-      <p>Label: {this.state.returnedObject.label}</p>
-      <p>X max: {this.state.returnedObject.xmax}</p>
-      <p>Y max: {this.state.returnedObject.ymax}</p>
-      <p>X min: {this.state.returnedObject.xmin}</p>
-      <p>Y min: {this.state.returnedObject.ymin}</p>
-      <p>Result: {this.state.returnedObject.result}</p>
-    </div>
-  );
+  showResultOnImage = () => {
+    let { confidence, label, xmax, ymax, xmin, ymin, result } = this.state.returnedObject;
+    var drawingCanvas = document.getElementById('canvas');
+    var ctx = drawingCanvas.msGetInputContext('2d');
+    ctx.rect(xmin, ymax, xmax - xmin, ymax - ymin);
+    ctx.stroke();
+    return (
+      <div>
+        <p>Confidence: {confidence}</p>
+        <p>Label: {label}</p>
+        <p>X max: {xmax}</p>
+        <p>Y max: {ymax}</p>
+        <p>X min: {xmin}</p>
+        <p>Y min: {ymin}</p>
+        <p>Result: {result}</p>
+      </div>
+    );
+  };
 
   render() {
     if (this.props.loading) {
@@ -204,7 +211,7 @@ export default class UploadView extends React.PureComponent {
             <Col xs={4}>{this.state.returnedObject.confidence > 0.5 && this.showResultOnImage()}</Col>
             <Col xs={8}>
               {' '}
-              <img className="img-fluid" src={this.state.returnedObject.imageUrl} />
+              <img className="img-fluid" id="canvas" src={this.state.returnedObject.imageUrl} />
             </Col>
           </Row>
           <Row>
