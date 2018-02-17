@@ -23,7 +23,7 @@ class HomeView extends React.Component {
     this.state = {
       screenshot: null,
       videoIdD: 'AbTrGcHWOWA',
-      pizero: '3qvwtrWb0lQ',
+      pizero: 'f69entCLgQY',
       piblackbox: 'Y59Fg_KmnrA',
       piscreen: 'HsYM2q-IUhY'
     };
