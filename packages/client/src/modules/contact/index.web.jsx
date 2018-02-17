@@ -10,7 +10,7 @@ export default new Feature({
   navItem: (
     <MenuItem key="contact">
       <NavLink to="/contact" className="nav-link" activeClassName="active">
-        ติดต่อเรา
+        Contact Us
       </NavLink>
     </MenuItem>
   )

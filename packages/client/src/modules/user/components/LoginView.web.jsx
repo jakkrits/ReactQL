@@ -30,11 +30,11 @@ export default class LoginView extends React.PureComponent {
 
     const renderMetaData = () => (
       <Helmet
-        title={`${settings.app.name} - เข้าสู่ระบบ`}
+        title={`${settings.app.name} - Login`}
         meta={[
           {
             name: 'description',
-            content: `${settings.app.name} - หน้าล็อกอิน`
+            content: `${settings.app.name} - Signin Page`
           }
         ]}
       />
@@ -44,12 +44,12 @@ export default class LoginView extends React.PureComponent {
       <PageLayout>
         {renderMetaData()}
         <LayoutCenter>
-          <h1 className="text-center">เข้าสู่ระบบ</h1>
+          <h1 className="text-center">Login</h1>
           <LoginForm onSubmit={this.onSubmit(login)} />
           <hr />
           <Card>
             <CardGroup>
-              <CardTitle>ทดสอบผู้ใช้งาน:</CardTitle>
+              <CardTitle>Test Users: </CardTitle>
               <CardText>admin@example.com:admin</CardText>
               <CardText>user@example.com:user</CardText>
               {settings.subscription.enabled && <CardText>subscriber@example.com:subscriber</CardText>}

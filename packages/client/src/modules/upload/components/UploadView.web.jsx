@@ -182,7 +182,7 @@ export default class UploadView extends React.PureComponent {
     const { error } = this.state;
     const columns = [
       {
-        title: 'ชื่อไฟล์',
+        title: 'Name',
         dataIndex: 'name',
         key: 'name',
         render: (text, record) => (
@@ -192,12 +192,12 @@ export default class UploadView extends React.PureComponent {
         )
       },
       {
-        title: 'ลบ',
+        title: 'Delete',
         key: 'actions',
         width: 50,
         render: (text, record) => (
           <Button color="danger" size="sm" className="delete-button" onClick={() => this.hendleRemoveFile(record.id)}>
-            ลบ
+            Delete
           </Button>
         )
       }
@@ -217,7 +217,7 @@ export default class UploadView extends React.PureComponent {
           <Row>
             <Col xs={4}>
               <Dropzone onDrop={this.onDrop(uploadFiles)}>
-                <p>อัพโหลดไฟล์ภาพหรือวิดีโอ (คลิกหรือลากไฟล์วางที่นี่)</p>
+                <p>Click to upload (or Drag & Drop)</p>
               </Dropzone>
             </Col>
             <Col xs={8}>

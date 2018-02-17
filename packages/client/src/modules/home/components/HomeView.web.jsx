@@ -2,6 +2,7 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import { CardBody, CardSubtitle, CardDeck } from 'reactstrap';
 import YouTube from 'react-youtube';
+// import domtoimage from 'dom-to-image';
 import { PageLayout } from '../../common/components/web';
 import { Row, Col, Card, CardText, CardTitle, Button } from '../../common/components/web/ui-bootstrap';
 
@@ -56,8 +57,8 @@ class HomeView extends React.Component {
               <Card>
                 <YouTube videoId={this.state.piblackbox} opts={opts} />
                 <CardBody>
-                  <CardTitle>Camera 1</CardTitle>
-                  <CardSubtitle>Gate A</CardSubtitle>
+                  <CardTitle>Camera 2</CardTitle>
+                  <CardSubtitle>Gate B</CardSubtitle>
                   <CardText>
                     Status: <small className="text-muted">Streaming</small>
                   </CardText>
@@ -70,8 +71,8 @@ class HomeView extends React.Component {
               <Card>
                 <YouTube videoId={this.state.piscreen} opts={opts} />
                 <CardBody>
-                  <CardTitle>Camera 1</CardTitle>
-                  <CardSubtitle>Gate A</CardSubtitle>
+                  <CardTitle>Camera 3</CardTitle>
+                  <CardSubtitle>Gate C</CardSubtitle>
                   <CardText>
                     Status: <small className="text-muted">Streaming</small>
                   </CardText>
@@ -81,8 +82,8 @@ class HomeView extends React.Component {
               <Card>
                 <YouTube videoId={this.state.videoIdD} opts={opts} />
                 <CardBody>
-                  <CardTitle>Camera 1</CardTitle>
-                  <CardSubtitle>Gate A</CardSubtitle>
+                  <CardTitle>Camera 4</CardTitle>
+                  <CardSubtitle>Gate D</CardSubtitle>
                   <CardText>
                     Status: <small className="text-muted">Streaming</small>
                   </CardText>

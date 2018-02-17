@@ -52,7 +52,7 @@ const LoginForm = ({ handleSubmit, submitting, error, handleChange, values }) =>
       <div className="text-center">{error && <Alert color="error">{error}</Alert>}</div>
       <div className="text-center">
         <Button color="primary" type="submit" disabled={submitting}>
-          ล็อกอิน!
+          Login!
         </Button>
         {settings.user.auth.facebook.enabled && (
           <Button color="primary" type="button" onClick={facebookLogin} style={{ margin: 10 }}>
@@ -66,13 +66,13 @@ const LoginForm = ({ handleSubmit, submitting, error, handleChange, values }) =>
         )}
       </div>
       <Link className="text-center" to="/forgot-password">
-        ลืมพาสเวิร์ด?
+        Forget Password
       </Link>
       <hr />
       <div style={{ marginBottom: 16 }}>
-        <span style={{ lineHeight: '58px' }}>ยังไม่มีบัญชีผู้ใช้</span>
+        <span style={{ lineHeight: '58px' }}>Register</span>
         <NavLink className="btn btn-primary" to="/register" activeClassName="active" style={{ margin: 10 }}>
-          ลงทะเบียน
+          Register
         </NavLink>
       </div>
     </Form>

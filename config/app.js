@@ -1,5 +1,5 @@
 export default {
-  name: 'อาชาไนยแล็ป by PPSmart',
+  name: 'ArchanaiLAB',
   logging: {
     debugSQL: false,
     apolloLogging: false
