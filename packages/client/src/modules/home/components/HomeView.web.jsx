@@ -22,10 +22,10 @@ class HomeView extends React.Component {
     super(props);
     this.state = {
       screenshot: null,
-      videoIdA: '3SkZce9HJAw',
-      videoIdB: 'BcsKqwNMpmw',
-      videoIDC: '2P4PaLr58Ec',
-      videoIdD: 'AbTrGcHWOWA'
+      videoIdD: 'AbTrGcHWOWA',
+      pizero: '3qvwtrWb0lQ',
+      piblackbox: 'Y59Fg_KmnrA',
+      piscreen: 'qbw_kkZvISI'
     };
   }
 
@@ -43,7 +43,7 @@ class HomeView extends React.Component {
           <Col>
             <CardDeck>
               <Card>
-                <YouTube videoId={this.state.videoIdA} opts={opts} />
+                <YouTube videoId={this.state.pizero} opts={opts} />
                 <CardBody>
                   <CardTitle>Camera 1</CardTitle>
                   <CardSubtitle>Gate A</CardSubtitle>
@@ -54,7 +54,7 @@ class HomeView extends React.Component {
                 </CardBody>
               </Card>
               <Card>
-                <YouTube videoId={this.state.videoIdB} opts={opts} />
+                <YouTube videoId={this.state.piblackbox} opts={opts} />
                 <CardBody>
                   <CardTitle>Camera 1</CardTitle>
                   <CardSubtitle>Gate A</CardSubtitle>
@@ -68,7 +68,7 @@ class HomeView extends React.Component {
             <br />
             <CardDeck>
               <Card>
-                <YouTube videoId={this.state.videoIdC} opts={opts} />
+                <YouTube videoId={this.state.piscreen} opts={opts} />
                 <CardBody>
                   <CardTitle>Camera 1</CardTitle>
                   <CardSubtitle>Gate A</CardSubtitle>
