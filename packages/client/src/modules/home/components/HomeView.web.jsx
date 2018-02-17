@@ -2,7 +2,8 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import { CardBody, CardSubtitle, CardDeck } from 'reactstrap';
 import YouTube from 'react-youtube';
-// import domtoimage from 'dom-to-image';
+import html2canvas from 'html2canvas';
+import styled from 'styled-components';
 import { PageLayout } from '../../common/components/web';
 import { Row, Col, Card, CardText, CardTitle, Button } from '../../common/components/web/ui-bootstrap';
 
@@ -18,16 +19,44 @@ const renderMetaData = () => (
   />
 );
 
+const Title = styled.h1`
+  font-size: 1.5em;
+  text-align: center;
+  color: palevioletred;
+`;
+
 class HomeView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      date: new Date(),
       screenshot: null,
       videoIdD: 'AbTrGcHWOWA',
       pizero: 'f69entCLgQY',
       piblackbox: 'Y59Fg_KmnrA',
       piscreen: 'HsYM2q-IUhY'
     };
+  }
+
+  componentDidMount() {
+    this.timerID = setInterval(() => this.tick(), 10000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timerID);
+  }
+
+  tick() {
+    this.setState({
+      date: new Date()
+    });
+    const element = document.getElementById('myId');
+
+    html2canvas(element).then(function(canvas) {
+      // Export the canvas to its data URI representation
+      const imageData = canvas.toDataURL('image/png');
+      console.log(imageData);
+    });
   }
 
   render() {
@@ -40,6 +69,9 @@ class HomeView extends React.Component {
     return (
       <PageLayout>
         {renderMetaData()}
+        <Row>
+          <Title>{this.state.date.toLocaleTimeString()}</Title>
+        </Row>
         <Row>
           <Col>
             <CardDeck>
@@ -55,7 +87,9 @@ class HomeView extends React.Component {
                 </CardBody>
               </Card>
               <Card>
-                <YouTube videoId={this.state.piblackbox} opts={opts} />
+                <div id="cam1">
+                  <YouTube videoId={this.state.piblackbox} opts={opts} />
+                </div>
                 <CardBody>
                   <CardTitle>Camera 2</CardTitle>
                   <CardSubtitle>Gate B</CardSubtitle>

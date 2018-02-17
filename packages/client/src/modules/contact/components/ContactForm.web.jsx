@@ -27,7 +27,7 @@ const ContactForm = ({ values, handleSubmit, error, sent, handleChange }) => {
         onChange={handleChange}
       />
       <Field
-        name="เรื่อง"
+        name="Subject"
         component={RenderField}
         type="textarea"
         label="Content"
