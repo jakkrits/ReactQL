@@ -50,12 +50,10 @@ class HomeView extends React.Component {
     this.setState({
       date: new Date()
     });
-    const element = document.getElementById('myId');
-
-    html2canvas(element).then(function(canvas) {
-      // Export the canvas to its data URI representation
+    const element = document.getElementById('test1');
+    html2canvas(element).then(canvas => {
       const imageData = canvas.toDataURL('image/png');
-      console.log(imageData);
+      console.log('Report Image URL: ' + imageData);
     });
   }
 
@@ -70,6 +68,14 @@ class HomeView extends React.Component {
       <PageLayout>
         {renderMetaData()}
         <Row>
+          <div id="test1">
+            <iframe
+              frameBorder="0"
+              height="100%"
+              width="100%"
+              src="https://youtube.com/embed/AbTrGcHWOWA?autoplay=1&controls=0&showinfo=0&autohide=1"
+            />
+          </div>
           <Title>{this.state.date.toLocaleTimeString()}</Title>
         </Row>
         <Row>
